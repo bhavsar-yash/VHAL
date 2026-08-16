@@ -1,0 +1,8 @@
+android_app {
+    name: "VhalCanBridgeClient",
+    srcs: ["src/**/*.kt"],
+    manifest: "AndroidManifest.xml",
+    platform_apis: true,
+    privileged: true,
+    certificate: "platform",
+}

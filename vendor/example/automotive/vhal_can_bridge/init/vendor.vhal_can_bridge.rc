@@ -1,0 +1,7 @@
+service vendor.vhal_can_bridge /vendor/bin/hw/vendor.vhal_can_bridge
+    class hal
+    user system
+    group system
+    oneshot
+
+# TODO(aaos15): add explicit interface/instance declarations after finalizing service binary wiring.
