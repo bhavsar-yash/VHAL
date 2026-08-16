@@ -1,0 +1,8 @@
+type vendor_vhal_can_bridge, domain;
+type vendor_vhal_can_bridge_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(vendor_vhal_can_bridge)
+
+allow vendor_vhal_can_bridge self:capability net_raw;
+allow vendor_vhal_can_bridge self:socket create_socket_perms;
+allow vendor_vhal_can_bridge self:packet_socket create_socket_perms;

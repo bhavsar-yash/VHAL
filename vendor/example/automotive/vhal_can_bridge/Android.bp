@@ -1,0 +1,37 @@
+cc_library_static {
+    name: "libvhal_can_bridge_core",
+    vendor: true,
+    srcs: ["core/src/*.cpp"],
+    export_include_dirs: ["core/include"],
+    cflags: ["-Wall", "-Werror"],
+    cpp_std: "c++17",
+}
+
+cc_library_static {
+    name: "libvhal_can_bridge_can",
+    vendor: true,
+    srcs: ["can/src/*.cpp"],
+    export_include_dirs: ["can/include"],
+    local_include_dirs: ["core/include"],
+    cflags: ["-Wall", "-Werror"],
+    cpp_std: "c++17",
+}
+
+cc_library_static {
+    name: "libvhal_can_bridge_vhal",
+    vendor: true,
+    srcs: ["vhal/src/*.cpp"],
+    static_libs: [
+        "libvhal_can_bridge_core",
+        "libvhal_can_bridge_can",
+    ],
+    export_include_dirs: ["vhal/include"],
+    local_include_dirs: [
+        "core/include",
+        "can/include",
+    ],
+    cflags: ["-Wall", "-Werror"],
+    cpp_std: "c++17",
+}
+
+// TODO(aaos15): add a vendor daemon/service target wired to your platform's VHAL service process.

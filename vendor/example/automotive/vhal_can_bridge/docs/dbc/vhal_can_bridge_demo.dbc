@@ -1,0 +1,53 @@
+VERSION "vhal_can_bridge_demo_phase2"
+
+NS_ :
+    NS_DESC_
+    CM_
+    BA_DEF_
+    BA_
+    VAL_
+    CAT_DEF_
+    CAT_
+    FILTER
+    BA_DEF_DEF_
+    EV_DATA_
+    ENVVAR_DATA_
+    SGTYPE_
+    SGTYPE_VAL_
+    BA_DEF_SGTYPE_
+    BA_SGTYPE_
+    SIG_TYPE_REF_
+    VAL_TABLE_
+    SIG_GROUP_
+    SIG_VALTYPE_
+    SIGTYPE_VALTYPE_
+    BO_TX_BU_
+    BA_DEF_REL_
+    BA_REL_
+    BA_DEF_DEF_REL_
+    BU_SG_REL_
+    BU_EV_REL_
+    BU_BO_REL_
+    SG_MUL_VAL_
+
+BS_:
+
+BU_: CAN_BRIDGE
+
+BO_ 291 PT_SPEED: 8 CAN_BRIDGE
+ SG_ vehicle_speed_kph : 0|16@1+ (0.01,0) [0|655.35] "kph"  CAN_BRIDGE
+
+BO_ 512 PT_STATUS: 8 CAN_BRIDGE
+ SG_ engine_rpm : 0|16@1+ (0.25,0) [0|16383.75] "rpm"  CAN_BRIDGE
+
+BO_ 514 PT_GEAR: 8 CAN_BRIDGE
+ SG_ gear_position : 0|8@1+ (1,0) [0|15] "enum" CAN_BRIDGE
+
+BO_ 513 HVAC_STATUS: 8 CAN_BRIDGE
+ SG_ hvac_fan_level : 0|8@1+ (1,0) [0|7] "level" CAN_BRIDGE
+
+CM_ BO_ 291 "Vehicle speed frame used for PERF_VEHICLE_SPEED mapping.";
+CM_ BO_ 512 "Powertrain frame with RPM demo signal.";
+CM_ BO_ 514 "Powertrain frame with gear demo signal.";
+CM_ BO_ 513 "HVAC frame used for vendor read-only property demo.";
+CM_ SG_ 512 gear_position "0=invalid,1=P,2=R,3=N,4=D";
