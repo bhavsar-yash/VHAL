@@ -1,0 +1,12 @@
+cc_library_static {
+    name: "libvhalcore",
+    vendor: true,
+    cflags: ["-Wall", "-Werror", "-std=c++17"],
+    export_include_dirs: ["include"],
+    srcs: [
+        "src/CanSignalDecoder.cpp",
+        "src/PropertyMapper.cpp",
+        "src/CanVhalPipeline.cpp",
+        "sim/DevelopmentCanTransport.cpp",
+    ],
+}

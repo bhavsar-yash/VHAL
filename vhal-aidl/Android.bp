@@ -1,0 +1,17 @@
+cc_binary {
+    name: "vendor_can_vhal_service",
+    vendor: true,
+    init_rc: ["init/vendor.can_vhal_service.rc"],
+    vintf_fragments: ["vintf/vendor.can_vhal_service.xml"],
+    cflags: ["-Wall", "-Werror", "-std=c++17"],
+    srcs: [
+        "src/CanVhalService.cpp",
+        "src/main.cpp",
+    ],
+    local_include_dirs: ["include"],
+    header_libs: [],
+    static_libs: [
+        "libvhalcore",
+    ],
+    // TODO(aaos15): add generated AIDL VHAL shared/static libs once verified in target tree.
+}

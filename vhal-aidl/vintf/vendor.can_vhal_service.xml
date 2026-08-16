@@ -1,0 +1,7 @@
+<manifest version="1.0" type="device">
+    <!-- TODO(aaos15): replace placeholder with verified AIDL vehicle HAL entry. -->
+    <hal format="aidl" optional="true">
+        <name>vendor.example.automotive.vehicle</name>
+        <fqname>ICanVehicle/default</fqname>
+    </hal>
+</manifest>
