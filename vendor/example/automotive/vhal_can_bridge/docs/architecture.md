@@ -19,17 +19,36 @@ The transport layer uses Linux SocketCAN directly. No emulator-only transport is
 
 Only the interface name changes at runtime; the decoder and VHAL mapping logic stay identical.
 
-## Why DBC is deferred
+## Starter DBC phase
 
-During initial bring-up, a small explicit mapping is faster to validate than introducing a full DBC parser surface.
+The repository now includes a small starter DBC at:
 
-Current scope:
-- one CAN frame ID
-- one signal
-- one decoder
-- one mapped AAOS property
+```text
+docs/dbc/vhal_can_bridge_demo.dbc
+```
 
-Future work can replace the hard-coded mapping with DBC-driven tables without changing module boundaries.
+Scope is intentionally limited:
+- vehicle speed
+- powertrain RPM
+- gear position
+- HVAC fan level
+
+The implementation is DBC-aligned but still uses explicit decode logic (no full DBC parser yet).
+
+## Vendor custom properties (demo)
+
+Two vendor custom demo properties are included in the VHAL glue layer:
+
+- **Read-only** vendor property (updated from CAN): HVAC fan level.
+- **Read-write** vendor property (set by client, echo update generated): drive mode request.
+
+> TODO: Finalize property IDs, access metadata, and permissions against your exact AAOS 15 property config and AIDL interfaces in your platform tree.
+
+## Why full DBC parsing is still deferred
+
+During bring-up, explicit mappings keep behavior deterministic and simpler to debug.
+
+Future work can replace hard-coded decode branches with parser-driven tables while preserving module boundaries.
 
 ## AAOS 15 integration shape (AIDL-oriented)
 
