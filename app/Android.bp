@@ -1,0 +1,10 @@
+android_app {
+    name: "CanVhalDemoApp",
+    platform_apis: true,
+    srcs: ["src/**/*.kt"],
+    resource_dirs: ["res"],
+    manifest: "AndroidManifest.xml",
+    privileged: true,
+    certificate: "platform",
+    kotlincflags: ["-Xjvm-default=all"],
+}

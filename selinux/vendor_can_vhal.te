@@ -1,0 +1,10 @@
+type vendor_can_vhal, domain;
+type vendor_can_vhal_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(vendor_can_vhal)
+
+allow vendor_can_vhal self:capability net_raw;
+allow vendor_can_vhal self:socket create_socket_perms;
+allow vendor_can_vhal self:packet_socket create_socket_perms;
+
+# TODO(aaos15): tighten domains and binder/service_manager permissions for final service path.

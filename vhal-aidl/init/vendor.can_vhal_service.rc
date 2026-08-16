@@ -1,0 +1,7 @@
+service vendor.can_vhal_service /vendor/bin/vendor_can_vhal_service
+    class hal
+    user vehicle_network
+    group system
+    oneshot
+
+# TODO(aaos15): verify user/group/seclabel/threading model in target device tree.

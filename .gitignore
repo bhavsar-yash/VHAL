@@ -1,0 +1,8 @@
+# C/C++ build artifacts
+/build/
+**/build/
+
+# Generic local artifacts
+*.o
+*.a
+*.so
